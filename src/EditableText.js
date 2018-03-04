@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './EditableText.css';
-import { Button, Icon, TextArea } from 'semantic-ui-react';
+import { Button, Icon, TextArea, Form } from 'semantic-ui-react';
 
 class EditableText extends Component {
     constructor(props) {
@@ -44,11 +44,14 @@ class EditableText extends Component {
       <div style={{position: 'relative', maxWidth: '300px'}}>
         {!this.state.isEditing && <div onClick={this.toggleEdit}>{this.state.description    }</div>}
         {this.state.isEditing &&<div>
-            <Button.Group size='mini' style={{position: 'absolute', top: '0px', right: '0', opacity: '0.5'}}>
-                <Button icon color='green' onClick={this.saveChange} inverted><Icon name='checkmark' /></Button>
-                <Button icon color='red' onClick={this.discardChange} inverted><Icon name='remove' /></Button>
-            </Button.Group>
-            <TextArea onChange={this.handleChange} style={{width: '100%', minHeight: 300, padding: 20}} autoHeight value={this.state.dirtyDescription} />
+            
+            <Form>
+              <Button.Group size='mini' style={{position: 'absolute', top: '0px', right: '0', opacity: '0.5'}}>
+                  <Button icon color='green' onClick={this.saveChange} inverted><Icon name='checkmark' /></Button>
+                  <Button icon color='red' onClick={this.discardChange} inverted><Icon name='remove' /></Button>
+              </Button.Group>
+              <TextArea onChange={this.handleChange} style={{width: '100%', minHeight: 300, padding: 20}} autoHeight value={this.state.dirtyDescription} />
+            </Form>
         </div>}
       </div>
     );
