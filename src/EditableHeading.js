@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './EditableHeading.css';
+import { Input, Button, Icon, Header } from 'semantic-ui-react';
 
 class EditableHeading extends Component {
   constructor(props) {
@@ -40,12 +41,16 @@ class EditableHeading extends Component {
 
   render() {
     return (
-      <div>
-        {!this.state.isEditing && <div onClick={this.toggleEdit}>{this.state.description}</div>}
-        {this.state.isEditing && <div>
-          <input type="text" value={this.state.dirtyDescription} onChange={this.handleChange} />
-          <button type="button" onClick={this.saveChange}>Save</button>
-          <button type="button" onClick={this.discardChange}>Discard</button>
+      <div style={{height: '40px', maxHeight: '40px'}}>
+        {!this.state.isEditing && <div>
+          <Header as='h2' onClick={this.toggleEdit}>{this.state.description}</Header>
+        </div>}
+        {this.state.isEditing && <div style={{position: 'relative', maxWidth: '300px'}}>
+          <Button.Group size='mini' style={{position: 'absolute', top: '30px', right: '0', zIndex: 100, opacity: '0.5'}}>
+            <Button icon color='green' onClick={this.saveChange} inverted><Icon name='checkmark' /></Button>
+            <Button icon color='red' onClick={this.discardChange} inverted><Icon name='remove' /></Button>
+          </Button.Group>
+          <Input size='mini' value={this.state.dirtyDescription} onChange={this.handleChange} style={{width: '100%', border: 'none'}} />
         </div>}
       </div>
     );
