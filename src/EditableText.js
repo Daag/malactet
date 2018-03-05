@@ -59,7 +59,7 @@ class EditableText extends Component {
     return (
       <div style={{position: 'relative', maxWidth: '300px'}}>
         {!this.state.isEditing && <div onClick={this.toggleEdit}>{this.state.description    }</div>}
-        {this.state.isEditing &&<div ref={node => {this.node = node; }}>
+        {this.state.isEditing && <div ref={node => {this.node = node; }}>
             
             <Form>
               <Button.Group size='mini' style={{position: 'absolute', top: '0px', right: '0', opacity: '0.5'}}>
