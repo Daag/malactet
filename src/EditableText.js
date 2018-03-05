@@ -15,9 +15,17 @@ class EditableText extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.discardChange = this.discardChange.bind(this);
         this.saveChange = this.saveChange.bind(this);
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
       }
+
       
       toggleEdit(e) {
+        if (!this.state.isEditing) {
+          document.addEventListener('click', this.handleOutsideClick, false);
+        } else {
+          document.removeEventListener('click', this.handleOutsideClick, false);
+        }
+
         this.setState(prevState => ({
           isEditing: !prevState.isEditing,
           dirtyDescription: prevState.description
@@ -38,12 +46,20 @@ class EditableText extends Component {
       handleChange(e) {
         this.setState({dirtyDescription: e.target.value})
       }
+      
+      handleOutsideClick(e) {
+        if (this.node.contains(e.target)) {
+          return
+        }
+
+        this.saveChange(e);        
+      }
 
   render() {
     return (
       <div style={{position: 'relative', maxWidth: '300px'}}>
         {!this.state.isEditing && <div onClick={this.toggleEdit}>{this.state.description    }</div>}
-        {this.state.isEditing &&<div>
+        {this.state.isEditing &&<div ref={node => {this.node = node; }}>
             
             <Form>
               <Button.Group size='mini' style={{position: 'absolute', top: '0px', right: '0', opacity: '0.5'}}>
