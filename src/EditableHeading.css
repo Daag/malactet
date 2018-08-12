@@ -1,0 +1,16 @@
+.lb-editable-heading {
+    position: relative;
+    max-width: 300px;
+}
+
+.lb-eh-accept-discard {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    opacity: 0.4;
+    z-index: 100;
+}
+
+.lb-eh-accept-discard:hover {
+    opacity: 1;
+}
