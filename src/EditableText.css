@@ -1,0 +1,21 @@
+.lb-editable-text {
+    position: relative;
+    max-width: 300px;
+}
+
+.lb-editable-text .ui.form textarea {
+    width: 100%;
+    min-height: 50px;
+    padding-top: 20px;
+}
+
+.lb-et-accept-discard {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.4;
+}
+
+.lb-et-accept-discard:hover {
+    opacity: 1;
+}

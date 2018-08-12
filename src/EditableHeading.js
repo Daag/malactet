@@ -60,8 +60,8 @@ class EditableHeading extends Component {
         {!this.state.isEditing && <div>
           <Header as='h2' onClick={this.toggleEdit}>{this.state.description}</Header>
         </div>}
-        {this.state.isEditing && <div ref={node => {this.node = node; }} style={{position: 'relative', maxWidth: '300px'}}>
-          <Button.Group size='mini' style={{position: 'absolute', top: '30px', right: '0', zIndex: 100, opacity: '0.5'}}>
+        {this.state.isEditing && <div ref={node => {this.node = node; }} className='lb-editable-heading'>
+          <Button.Group size='mini' className='lb-eh-accept-discard'>
             <Button icon color='green' onClick={this.saveChange} inverted><Icon name='checkmark' /></Button>
             <Button icon color='red' onClick={this.discardChange} inverted><Icon name='remove' /></Button>
           </Button.Group>

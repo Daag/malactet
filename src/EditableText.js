@@ -55,18 +55,19 @@ class EditableText extends Component {
         this.saveChange(e);        
       }
 
+    
   render() {
     return (
-      <div style={{position: 'relative', maxWidth: '300px'}}>
+      <div className='lb-editable-text'>
         {!this.state.isEditing && <div onClick={this.toggleEdit}>{this.state.description    }</div>}
         {this.state.isEditing && <div ref={node => {this.node = node; }}>
             
             <Form>
-              <Button.Group size='mini' style={{position: 'absolute', top: '0px', right: '0', opacity: '0.5'}}>
+              <Button.Group size='mini' className='lb-et-accept-discard'>
                   <Button icon color='green' onClick={this.saveChange} inverted><Icon name='checkmark' /></Button>
                   <Button icon color='red' onClick={this.discardChange} inverted><Icon name='remove' /></Button>
               </Button.Group>
-              <TextArea onChange={this.handleChange} style={{width: '100%', minHeight: 300, padding: 20}} autoHeight value={this.state.dirtyDescription} />
+              <TextArea onChange={this.handleChange} autoHeight value={this.state.dirtyDescription} />
             </Form>
         </div>}
       </div>
